@@ -1,12 +1,13 @@
 import React from 'react';
 import './App.css';
 
-import UseToggleDemo from './hooks/useToggle/demo';
+import { UseToggleDemo1, UseToggleDemo2} from './hooks/useToggle/demo';
 
 function App() {
   return (
     <div className="App">
-      <UseToggleDemo></UseToggleDemo>
+      <UseToggleDemo1></UseToggleDemo1>
+      <UseToggleDemo2></UseToggleDemo2>
     </div>
   );
 }
