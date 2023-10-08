@@ -1,7 +1,19 @@
 import { useMemo, useState } from "react";
 
+export interface Actions<T> {
+  setLeft: () => void;
+  setRight: () => void;
+  set: (value: T) => void;
+  toggle: () => void;
+}
+
+function useToggle<T = boolean>(): [boolean, Actions<T>];
+// function useToggle<T>(defaultValue: T): [T, Actions<T>];
+
+function useToggle<T, U>(defaultValue: T, reverseValue: U): [T | U, Actions<T | U>];
+
 // 接受两个可选参数，在它们之间进行切换。
-function useToggle<D, R>(defaultValue: D, reverseValue: R) {
+function useToggle<D, R>(defaultValue: D = false as unknown as D, reverseValue?: R) {
   const [state, setState] = useState<D | R>(defaultValue);
 
   const actions = useMemo(() => {
