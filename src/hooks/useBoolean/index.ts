@@ -22,8 +22,8 @@ export default function useBoolean(defaultValue = false): [Boolean, Actions] {
   return [boolean, actions]
 }
 
-export let useBooleanFormToggle = () => {
-  const [state, { toggle, set}] = useToggle();
+export let useBooleanFormToggle = (defaultValue = false): [Boolean, Actions] => {
+  const [state, { toggle, set}] = useToggle(defaultValue);
   const actions: Actions = useMemo(() => {
     return {
       toggle,
