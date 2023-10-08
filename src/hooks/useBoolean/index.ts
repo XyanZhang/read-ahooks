@@ -1,4 +1,5 @@
 import { useCallback, useMemo, useState } from "react";
+import useToggle from '../useToggle/index';
 
 export interface Actions {
   setTrue: () => void;
@@ -19,4 +20,17 @@ export default function useBoolean(defaultValue = false): [Boolean, Actions] {
     }
   }, [])
   return [boolean, actions]
+}
+
+export let useBooleanFormToggle = () => {
+  const [state, { toggle, set}] = useToggle();
+  const actions: Actions = useMemo(() => {
+    return {
+      toggle,
+      set: (v) => set(!!v),
+      setTrue: () => set(true),
+      setFalse : () => set(false),
+    }
+  }, [])
+  return [state, actions]
 }
